@@ -1,5 +1,4 @@
 import axios from "axios";
-import { resolveTripleslashReference } from "typescript";
 import { OrderPayload } from "./Orders/types";
 
 const API_URL = 'http://localhost:8080';
