@@ -30,6 +30,7 @@ A aplicação consiste em um sistema de pedidos, onde os dados são listados no 
 - HTML / CSS / JS / TypeScript
 - ReactJS
 - React Native
+- Maptobox
 ## Implantação em produção
 - Back end: Heroku
 - Front end web: Netlify
