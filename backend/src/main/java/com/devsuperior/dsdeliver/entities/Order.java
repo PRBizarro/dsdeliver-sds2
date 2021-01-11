@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.criteria.From;
 
 
 @Entity
@@ -24,7 +25,6 @@ public class Order implements Serializable{
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String address;
 	private Double latitude;
 	private Double longitude;
@@ -36,7 +36,7 @@ public class Order implements Serializable{
 		joinColumns = @JoinColumn(name = "order_id"),
 		inverseJoinColumns = @JoinColumn(name = "product_id"))
 	private Set<Product> products = new HashSet<>();
-
+	
 	public Order() {
 
 	}
@@ -97,6 +97,14 @@ public class Order implements Serializable{
 
 	public void setStatus(OrderStatus status) {
 		this.status = status;
+	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (Product p : products) {
+			sum += p.getPrice();
+		}
+		return sum;
 	}
 
 	public Set<Product> getProducts() {
